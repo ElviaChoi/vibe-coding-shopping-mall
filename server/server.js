@@ -22,7 +22,7 @@ app.use(cors({
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 1000,
   message: '너무 많은 요청이 발생했습니다. 잠시 후 다시 시도해주세요.'
 });
 app.use(limiter);
