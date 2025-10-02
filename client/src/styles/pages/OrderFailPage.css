@@ -1,0 +1,229 @@
+/* 주문 실패 페이지 */
+.order-fail-page {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding: 100px 20px 40px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-fail-container {
+  max-width: 700px;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 60px 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* 실패 아이콘 */
+.fail-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: #ffebee;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.fail-icon svg {
+  color: #d32f2f;
+}
+
+/* 제목 및 메시지 */
+.fail-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.fail-message {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* 안내 박스 */
+.fail-notice-box {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.fail-notice-box h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.fail-notice-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fail-notice-box li {
+  font-size: 0.95rem;
+  color: #555;
+  padding: 10px 0;
+  padding-left: 25px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.fail-notice-box li::before {
+  content: '•';
+  position: absolute;
+  left: 8px;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* 실패 상세 정보 */
+.fail-details {
+  background: #fff3e0;
+  border-left: 4px solid #ff9800;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.details-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e65100;
+  margin-bottom: 8px;
+}
+
+.details-content {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* 버튼 */
+.fail-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.btn-secondary,
+.btn-primary {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  display: inline-block;
+}
+
+.btn-secondary {
+  background: white;
+  color: #666;
+  border: 2px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+  border-color: #bbb;
+}
+
+.btn-primary {
+  background: #222;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #000;
+}
+
+/* 문의 정보 */
+.fail-contact {
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.fail-contact p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 5px 0;
+}
+
+.contact-info {
+  font-weight: 600;
+  color: #222;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .order-fail-page {
+    padding: 90px 15px 40px 15px;
+  }
+
+  .order-fail-container {
+    padding: 40px 25px;
+  }
+
+  .fail-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .fail-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .fail-title {
+    font-size: 1.6rem;
+  }
+
+  .fail-message {
+    font-size: 1rem;
+  }
+
+  .fail-notice-box {
+    padding: 20px;
+  }
+
+  .fail-actions {
+    flex-direction: column;
+  }
+
+  .btn-secondary,
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-fail-container {
+    padding: 30px 20px;
+  }
+
+  .fail-title {
+    font-size: 1.4rem;
+  }
+
+  .fail-notice-box li {
+    font-size: 0.9rem;
+  }
+}
+
