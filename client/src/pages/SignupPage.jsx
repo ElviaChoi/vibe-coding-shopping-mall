@@ -40,7 +40,8 @@ function SignupPage() {
       // confirmPassword는 서버로 전송하지 않음
       const { confirmPassword, ...userData } = formData;
       
-      const response = await fetch('http://localhost:5000/api/users', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const response = await fetch(`${API_URL}/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +105,7 @@ function SignupPage() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="이메일을 입력하세요"
+              placeholder="email@example.com"
               required
             />
           </div>
@@ -117,9 +118,9 @@ function SignupPage() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="비밀번호를 생성하세요 (8자 이상)"
-              required
+              placeholder="8자 이상 입력하세요"
               minLength="8"
+              required
             />
           </div>
 
@@ -132,54 +133,58 @@ function SignupPage() {
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="비밀번호를 다시 입력하세요"
-              required
               minLength="8"
+              required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="user_type">계정 유형 *</label>
-            <select
-              id="user_type"
-              name="user_type"
-              value={formData.user_type}
-              onChange={handleChange}
-              required
-              className="custom-select"
-            >
-              <option value="customer">고객</option>
-              <option value="admin">관리자</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="address">주소 (선택 사항)</label>
+            <label htmlFor="address">주소 (선택)</label>
             <input
               type="text"
               id="address"
               name="address"
               value={formData.address}
               onChange={handleChange}
-              placeholder="주소를 입력하세요"
+              placeholder="배송받을 주소를 입력하세요"
             />
           </div>
 
-          {message && (
-            <div className={`message ${message.includes('성공') ? 'success' : 'error'}`}>
-              {message}
-            </div>
-          )}
+          <div className="form-group">
+            <label htmlFor="user_type">회원 유형 *</label>
+            <select
+              id="user_type"
+              name="user_type"
+              value={formData.user_type}
+              onChange={handleChange}
+              required
+            >
+              <option value="customer">일반 고객</option>
+              <option value="admin">관리자</option>
+            </select>
+          </div>
 
-          <button type="submit" className="submit-button" disabled={loading}>
+          <button 
+            type="submit" 
+            className="signup-btn"
+            disabled={loading}
+          >
             {loading ? '처리 중...' : '회원가입'}
           </button>
         </form>
 
-        <div className="back-link">
-          <Link to="/">← 메인페이지로 돌아가기</Link>
+        {message && (
+          <div className={`message ${message.includes('성공') ? 'success' : 'error'}`}>
+            {message}
+          </div>
+        )}
+
+        <div className="login-link">
+          이미 계정이 있으신가요? 
+          <Link to="/login"> 로그인</Link>
+        </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

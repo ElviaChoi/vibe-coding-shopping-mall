@@ -26,7 +26,8 @@ function LoginPage() {
     setMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+      const response = await fetch(`${API_URL}/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,25 +96,24 @@ function LoginPage() {
               />
             </div>
 
-            {message && (
-              <div className={`message ${message.includes('성공') ? 'success' : 'error'}`}>
-                {message}
-              </div>
-            )}
-
-            <button type="submit" className="submit-button" disabled={loading}>
+            <button 
+              type="submit" 
+              className="login-btn"
+              disabled={loading}
+            >
               {loading ? '로그인 중...' : '로그인'}
             </button>
           </form>
 
-          <div className="login-links">
-            <div className="back-link">
-              <Link to="/">← 메인페이지로 돌아가기</Link>
+          {message && (
+            <div className={`message ${message.includes('성공') ? 'success' : 'error'}`}>
+              {message}
             </div>
-            <div className="signup-link">
-              <span>계정이 없으신가요? </span>
-              <Link to="/signup">회원가입</Link>
-            </div>
+          )}
+
+          <div className="signup-link">
+            아직 계정이 없으신가요? 
+            <Link to="/signup"> 회원가입</Link>
           </div>
         </div>
       </div>
