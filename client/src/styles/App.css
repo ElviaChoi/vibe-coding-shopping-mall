@@ -799,7 +799,7 @@
 
 .hero-title {
   font-size: 3.5rem;
-  font-weight: 300;
+  font-weight: 400; /* 데스크톱에서 폰트 두께 증가 (300 → 400) */
   line-height: 1.2;
   margin-bottom: 30px;
   color: white;
@@ -808,7 +808,8 @@
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 400; /* 데스크톱에서 폰트 두께 증가 */
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 40px;
@@ -893,6 +894,25 @@
   width: 100%;
   height: 600px;
   position: relative;
+}
+
+/* 모바일에서 HeroSection 이미지 높이 줄이기 */
+@media (max-width: 1024px) {
+  .placeholder-image {
+    height: 250px; /* 태블릿에서 250px로 대폭 줄임 */
+  }
+}
+
+@media (max-width: 768px) {
+  .placeholder-image {
+    height: 200px; /* 모바일에서 200px로 대폭 줄임 */
+  }
+}
+
+@media (max-width: 480px) {
+  .placeholder-image {
+    height: 150px; /* 작은 모바일에서 150px로 더 줄임 */
+  }
 }
 
 .image-placeholder {
@@ -1766,11 +1786,12 @@
   .hero-section .hero-content {
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 0;
+    padding-top: 80px; /* 위쪽 패딩 추가 */
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 40px; /* 태블릿에서 요소들 간격 추가 */
   }
   
   .hero-section .women-btn,
@@ -1807,7 +1828,14 @@
   }
   
   .hero-title {
-    font-size: 3.2rem;
+    font-size: 3.8rem; /* 태블릿에서 제목 크기 증가 */
+    font-weight: 400; /* 폰트 두께 증가 */
+  }
+  
+  .hero-description {
+    font-size: 1.3rem; /* 태블릿에서 설명 텍스트 크기 증가 */
+    font-weight: 500; /* 폰트 두께 증가 */
+    line-height: 1.6;
   }
   
   .collections-grid {
@@ -2007,7 +2035,7 @@
   }
   
   .hero-section .hero-content {
-    padding-top: 0;
+    padding-top: 60px; /* 모바일에서 위쪽 패딩 더 줄임 (80px → 60px) */
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 0;
@@ -2016,20 +2044,26 @@
     justify-content: flex-start;
     align-items: center;
     text-align: center;
+    gap: 35px; /* 모바일에서 요소들 간격 추가 */
   }
 
   .hero-title {
-    font-size: 2.6rem;
-    font-weight: 500;
-    margin-bottom: 22px;
+    font-size: 3.6rem; /* 모바일에서 제목 크기 더 증가 (3.2rem → 3.6rem) */
+    font-weight: 500; /* 폰트 두께 한 단계 줄임 (600 → 500) */
+    margin-bottom: 0; /* gap으로 간격 조정하므로 margin 제거 */
+    line-height: 1.3; /* 줄 간격 늘려서 여유롭게 (0.95 → 1.3) */
+    word-break: keep-all; /* 한글 줄바꿈 최적화 */
+    white-space: normal; /* 자연스러운 줄바꿈 허용 */
   }
 
   .hero-description {
-    font-size: 1.35rem;
-    font-weight: 400;
-    margin-bottom: 30px;
+    font-size: 1.5rem; /* 모바일에서 설명 텍스트 크기 증가 (1.35rem → 1.5rem) */
+    font-weight: 500; /* 폰트 두께 증가 (400 → 500) */
+    margin-bottom: 0; /* gap으로 간격 조정하므로 margin 제거 */
     max-width: 100%;
     line-height: 1.7;
+    word-break: keep-all; /* 한글 줄바꿈 최적화 */
+    white-space: normal; /* 자연스러운 줄바꿈 허용 */
   }
 
   .hero-buttons {
@@ -2073,11 +2107,18 @@
   }
   
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 3.0rem; /* 작은 모바일에서도 제목 크기 더 증가 (2.7rem → 3.0rem) */
+    font-weight: 500; /* 폰트 두께 한 단계 줄임 (600 → 500) */
+    line-height: 1.3; /* 줄 간격 늘려서 여유롭게 (0.95 → 1.3) */
+    word-break: keep-all; /* 한글 줄바꿈 최적화 */
+    white-space: normal; /* 자연스러운 줄바꿈 허용 */
   }
   
   .hero-description {
-    font-size: 1rem;
+    font-size: 1.2rem; /* 작은 모바일에서 설명 텍스트 크기 증가 (1rem → 1.2rem) */
+    font-weight: 500; /* 폰트 두께 증가 */
+    word-break: keep-all; /* 한글 줄바꿈 최적화 */
+    white-space: normal; /* 자연스러운 줄바꿈 허용 */
   }
   
   .section-title {
