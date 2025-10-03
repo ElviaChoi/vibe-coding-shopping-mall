@@ -167,6 +167,63 @@
   padding-left: 20px !important;
 }
 
+/* 모바일 메뉴 아이콘 스타일 */
+.mobile-menu-icons {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.mobile-icon-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+  padding: 18px 15px !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border: none !important;
+  background: #ffffff !important;
+  width: 100% !important;
+  text-align: left !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.mobile-icon-btn:hover {
+  color: #007bff !important;
+  background: #f0f0f0 !important;
+  padding-left: 20px !important;
+}
+
+.mobile-icon-btn svg {
+  width: 24px !important;
+  height: 24px !important;
+  flex-shrink: 0 !important;
+}
+
+.mobile-user-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  width: 100% !important;
+}
+
+.mobile-welcome {
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
 .nav-link {
   color: #666;
   text-decoration: none;
@@ -1174,13 +1231,13 @@
 .main-image {
   width: 100%;
   height: 700px;
-  background: white;
+  background: transparent;
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow 제거하여 하얀 배경 효과 제거 */
 }
 
 .product-main-image {
@@ -1509,6 +1566,23 @@
   
   .main-image {
     height: 500px;
+    /* 모바일에서 이미지 중앙 정렬 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* 하얀 배경 제거 */
+    background: transparent !important;
+    padding: 0 !important;
+    /* box-shadow 제거하여 하얀 배경 효과 제거 */
+    box-shadow: none !important;
+  }
+  
+  .product-main-image {
+    /* 모바일에서 이미지 크기 조정하여 중앙 정렬 */
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
   }
   
   .product-title {
@@ -1532,6 +1606,23 @@
   
   .main-image {
     height: 400px;
+    /* 모바일에서 이미지 중앙 정렬 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* 하얀 배경 제거 */
+    background: transparent !important;
+    padding: 0 !important;
+    /* box-shadow 제거하여 하얀 배경 효과 제거 */
+    box-shadow: none !important;
+  }
+  
+  .product-main-image {
+    /* 모바일에서 이미지 크기 조정하여 중앙 정렬 */
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
   }
   
   .product-title {
@@ -1815,6 +1906,11 @@
   
   .nav-menu {
     display: none;
+  }
+
+  /* 모바일에서 네비게이션 바의 아이콘들 숨김 */
+  .nav-icons {
+    display: none !important;
   }
   
   .user-menu {
