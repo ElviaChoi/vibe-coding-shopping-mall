@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './styles/App.css'
+import './styles/layouts/Navbar.css'
+import './styles/pages/MainPage.css'
+import './styles/components/Button.css'
 import MainPage from './pages/MainPage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
