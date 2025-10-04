@@ -1,0 +1,163 @@
+/* 주문 상태별 배지 스타일 */
+
+/* 주문대기 - 회색 */
+.status-btn:nth-child(1) {
+  border-color: #adb5bd;
+  color: #495057;
+}
+
+.status-btn:nth-child(1):hover {
+  background: #f8f9fa;
+  border-color: #6c757d;
+}
+
+.status-btn:nth-child(1).active {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+/* 결제완료 - 청록색 */
+.status-btn:nth-child(2) {
+  border-color: #4dd4ac;
+  color: #0c9463;
+}
+
+.status-btn:nth-child(2):hover {
+  background: #e6fcf5;
+  border-color: #17a2b8;
+}
+
+.status-btn:nth-child(2).active {
+  background: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+}
+
+/* 배송준비중 - 주황색 */
+.status-btn:nth-child(3) {
+  border-color: #ffc107;
+  color: #d39e00;
+}
+
+.status-btn:nth-child(3):hover {
+  background: #fff8e1;
+  border-color: #e0a800;
+}
+
+.status-btn:nth-child(3).active {
+  background: #ffc107;
+  border-color: #ffc107;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+/* 배송중 - 파란색 */
+.status-btn:nth-child(4) {
+  border-color: #66b2ff;
+  color: #0056b3;
+}
+
+.status-btn:nth-child(4):hover {
+  background: #e3f2fd;
+  border-color: #007bff;
+}
+
+.status-btn:nth-child(4).active {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+/* 배송완료 - 초록색 */
+.status-btn:nth-child(5) {
+  border-color: #66d9a6;
+  color: #155724;
+}
+
+.status-btn:nth-child(5):hover {
+  background: #d4edda;
+  border-color: #28a745;
+}
+
+.status-btn:nth-child(5).active {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+/* 취소 - 빨간색 */
+.status-btn:nth-child(6) {
+  border-color: #ff6b6b;
+  color: #c82333;
+}
+
+.status-btn:nth-child(6):hover {
+  background: #f8d7da;
+  border-color: #dc3545;
+}
+
+.status-btn:nth-child(6).active {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+/* 환불 - 보라색 */
+.status-btn:nth-child(7) {
+  border-color: #b197fc;
+  color: #5a1f99;
+}
+
+.status-btn:nth-child(7):hover {
+  background: #f3e5f5;
+  border-color: #6f42c1;
+}
+
+.status-btn:nth-child(7).active {
+  background: #6f42c1;
+  border-color: #6f42c1;
+  color: white;
+}
+
+/* 상태 버튼 공통 스타일 */
+.status-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.status-btn {
+  padding: 8px 16px;
+  border: 2px solid;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-btn.active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .status-buttons {
+    flex-direction: column;
+  }
+  
+  .status-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

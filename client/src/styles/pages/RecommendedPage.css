@@ -1,0 +1,220 @@
+/* 추천 상품 페이지 */
+.recommended-page,
+.category-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 20px 40px 20px;
+}
+
+.recommended-page .page-header,
+.category-page .page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.recommended-page .page-header h1,
+.category-page .page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2c2c2c;
+  margin-bottom: 16px;
+}
+
+.recommended-page .page-header p,
+.category-page .page-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.no-products-container {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-products-container h3 {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.no-products-container p {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+.loading-container,
+.error-container {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 추천 상품 페이지 전용 스타일 */
+.recommended-page .products-grid,
+.category-page .products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.recommended-page .product-item,
+.category-page .product-item {
+  position: relative;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.recommended-page .product-item:hover,
+.category-page .product-item:hover {
+  transform: translateY(-5px);
+}
+
+.recommended-page .product-image,
+.category-page .product-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  order: 1;
+}
+
+.recommended-page .product-image img,
+.category-page .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommended-page .product-item:hover .product-image img,
+.category-page .product-item:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.recommended-page .product-info,
+.category-page .product-info {
+  order: 2;
+  text-align: left;
+  padding: 20px;
+}
+
+.recommended-page .product-info h3,
+.recommended-page .product-info h4,
+.category-page .product-info h3,
+.category-page .product-info h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.recommended-page .product-info .price,
+.recommended-page .product-info p,
+.category-page .product-info .price,
+.category-page .product-info p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.recommended-page .sale-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #000;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.category-page .sold-out-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #6c757d;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+  .recommended-page .products-grid,
+  .category-page .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .recommended-page .product-image,
+  .category-page .product-image {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recommended-page,
+  .category-page {
+    padding: 80px 15px 30px 15px;
+  }
+  
+  .recommended-page .page-header h1,
+  .category-page .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .recommended-page .products-grid,
+  .category-page .products-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .recommended-page .product-image,
+  .category-page .product-image {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommended-page .page-header h1,
+  .category-page .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .recommended-page .product-image,
+  .category-page .product-image {
+    height: 350px;
+  }
+}

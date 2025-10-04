@@ -1,0 +1,361 @@
+/* 상품 디테일 페이지 */
+.product-detail-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 20px 80px 20px;
+  background: #fafafa;
+  min-height: calc(100vh - 200px);
+}
+
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  justify-items: start;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-image {
+  width: 100%;
+  height: 700px;
+  background: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow 제거하여 하얀 배경 효과 제거 */
+}
+
+.product-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.thumbnail-image:hover {
+  border-color: #666;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.thumbnail-image.active {
+  border-color: #666;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.product-category {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+  margin: 0;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0;
+  line-height: 1.3;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #555;
+  margin: 0 0 15px;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.product-description {
+  font-size: 1rem !important;
+  color: #666 !important;
+  font-weight: 300 !important;
+  font-style: italic !important;
+  margin: 12px 0 28px 0 !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+  align-self: flex-start !important;
+  width: 100% !important;
+}
+
+.size-selection,
+.quantity-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  align-self: flex-start;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.selection-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.size-btn {
+  padding: 12px 24px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.size-btn:hover:not(.out-of-stock) {
+  background: #f8f8f8;
+  color: #000;
+}
+
+.size-btn.selected {
+  background: #2c2c2c;
+  color: white;
+}
+
+.size-btn.out-of-stock {
+  background: #f5f5f5 !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background: #f8f8f8;
+  border-color: #2c2c2c;
+}
+
+.quantity-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.quantity-display {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  min-width: 40px;
+  text-align: center;
+}
+
+.product-actions-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  align-self: flex-start;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.admin-notice {
+  width: 100%;
+  padding: 20px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.admin-notice p {
+  margin: 0;
+  color: #856404;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.add-to-cart-btn,
+.buy-now-btn {
+  flex: 1;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 22px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.add-to-cart-btn {
+  background: #2c2c2c;
+  color: white;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+}
+
+.buy-now-btn {
+  background: white;
+  color: #2c2c2c;
+  border: 1px solid #2c2c2c;
+}
+
+.buy-now-btn:hover:not(:disabled) {
+  background: #eee;
+  color: #000;
+}
+
+.add-to-cart-btn:disabled,
+.buy-now-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #e0e0e0;
+}
+
+.shipping-info {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 34px;
+  margin-top: 20px;
+}
+
+.shipping-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin-bottom: 15px;
+}
+
+.shipping-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shipping-info li {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.shipping-info li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .product-detail-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .main-image {
+    height: 400px;
+  }
+  
+  .product-title {
+    font-size: 1.5rem;
+  }
+  
+  .product-price {
+    font-size: 1.5rem;
+  }
+  
+  .product-actions-buttons {
+    flex-direction: column;
+  }
+  
+  .add-to-cart-btn,
+  .buy-now-btn {
+    padding: 12px 20px;
+  }
+}

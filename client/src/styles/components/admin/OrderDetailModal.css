@@ -1,0 +1,160 @@
+/* Order Detail Modal Styles */
+.order-number {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f1f3f5;
+}
+
+.modal-section .info-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px;
+  grid-template-columns: none !important;
+}
+
+.modal-section .info-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px;
+  padding: 8px 0;
+  align-items: center;
+  width: 100%;
+}
+
+.modal-section .info-row.full {
+  flex-direction: row !important;
+  display: flex !important;
+}
+
+.modal-section .info-row .label {
+  font-weight: 500;
+  color: #6c757d;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 90px;
+  display: inline-block;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.modal-section .info-row .value {
+  color: #2c2c2c;
+  flex: 1;
+  word-break: break-word;
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-section .order-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.modal-section .item-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.modal-section .item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.modal-section .item-details {
+  flex: 1;
+}
+
+.modal-section .item-details h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0 0 8px 0;
+}
+
+.modal-section .item-details p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 4px 0;
+}
+
+.modal-section .item-details .item-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+.modal-section .order-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.modal-section .summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.modal-section .summary-row.total {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .modal-section .info-row {
+    flex-direction: column !important;
+    align-items: flex-start;
+  }
+  
+  .modal-section .info-row .label {
+    min-width: auto;
+    margin-bottom: 4px;
+  }
+  
+  .modal-section .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .modal-section .item-image {
+    width: 100px;
+    height: 100px;
+  }
+}
