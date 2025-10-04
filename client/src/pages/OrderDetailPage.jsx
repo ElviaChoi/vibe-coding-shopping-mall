@@ -4,7 +4,10 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import useAuth from '../hooks/useAuth';
 import { orderAPI } from '../utils/api';
-import { getStatusLabel, getStatusStep } from '../utils/orderUtils';
+import { getStatusLabel } from '../utils/orderUtils';
+import { OrderListCard, OrderStatusSteps, OrderItemsList } from '../components/order';
+import OrderTabs from '../components/admin/OrderTabs';
+import OrderDetailModal from '../components/admin/OrderDetailModal';
 import '../styles/pages/OrderDetailPage.css';
 
 function OrderDetailPage() {
@@ -216,32 +219,11 @@ function OrderDetailPage() {
           </div>
 
           {orders.length > 0 && (
-            <div className="order-tabs">
-              <button 
-                className={`order-tab ${activeTab === 'all' ? 'active' : ''}`}
-                onClick={() => setActiveTab('all')}
-              >
-                전체 <span className="tab-count">({getTabCount('all')})</span>
-              </button>
-              <button 
-                className={`order-tab ${activeTab === 'paid' ? 'active' : ''}`}
-                onClick={() => setActiveTab('paid')}
-              >
-                배송준비중 <span className="tab-count">({getTabCount('paid')})</span>
-              </button>
-              <button 
-                className={`order-tab ${activeTab === 'shipped' ? 'active' : ''}`}
-                onClick={() => setActiveTab('shipped')}
-              >
-                배송중 <span className="tab-count">({getTabCount('shipped')})</span>
-              </button>
-              <button 
-                className={`order-tab ${activeTab === 'delivered' ? 'active' : ''}`}
-                onClick={() => setActiveTab('delivered')}
-              >
-                배송완료 <span className="tab-count">({getTabCount('delivered')})</span>
-              </button>
-            </div>
+            <OrderTabs 
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              getTabCount={getTabCount}
+            />
           )}
 
           {filteredOrders.length === 0 ? (
@@ -257,64 +239,11 @@ function OrderDetailPage() {
           ) : (
             <div className="orders-list">
               {filteredOrders.map((order) => (
-                <div 
-                  key={order._id} 
-                  className="order-list-card"
-                  onClick={() => setSelectedOrder(order)}
-                >
-                  <div className="order-card-header">
-                    <div className="order-info">
-                      <h3 className="order-list-number">{order.orderNumber}</h3>
-                      <p className="order-date">
-                        {new Date(order.createdAt).toLocaleDateString('ko-KR', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </p>
-                    </div>
-                    <div className="order-status-badge" data-status={order.status}>
-                      {getStatusLabel(order.status)}
-                    </div>
-                  </div>
-
-                  <div className="order-items-preview">
-                    {order.items.slice(0, 2).map((item, index) => (
-                      <div key={index} className="order-item-preview">
-                        <div className="item-image-small">
-                          {item.product?.images?.[0] && (
-                            <img 
-                              src={item.product.images[0].url} 
-                              alt={item.product.name}
-                              loading="lazy"
-                            />
-                          )}
-                        </div>
-                        <div className="item-info-small">
-                          <h4 className="item-name-small">{item.product?.name || '상품명'}</h4>
-                          <p className="item-details-small">
-                            {item.size} / {item.quantity}개
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                    {order.items.length > 2 && (
-                      <p className="more-items">외 {order.items.length - 2}개 상품</p>
-                    )}
-                  </div>
-
-                  <div className="order-card-footer">
-                    <div className="total-amount">
-                      <span className="total-label">총 결제 금액</span>
-                      <span className="total-value">
-                        ₩{order.payment.finalAmount.toLocaleString()}
-                      </span>
-                    </div>
-                    <button className="btn-view-detail">
-                      주문 상세보기 →
-                    </button>
-                  </div>
-                </div>
+                <OrderListCard
+                  key={order._id}
+                  order={order}
+                  onOrderClick={setSelectedOrder}
+                />
               ))}
             </div>
           )}

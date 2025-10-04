@@ -1,0 +1,66 @@
+/* 상품 이미지 갤러리 */
+.product-image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-image-gallery .main-image {
+  width: 100%;
+  height: 500px;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-gallery .main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-image-gallery .thumbnail-images {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.product-image-gallery .thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.product-image-gallery .thumbnail:hover {
+  border-color: #333;
+}
+
+.product-image-gallery .thumbnail.active {
+  border-color: #333;
+}
+
+.product-image-gallery .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-image-gallery .image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  color: #999;
+  font-size: 3rem;
+}

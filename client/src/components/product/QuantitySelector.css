@@ -1,0 +1,57 @@
+/* 수량 선택 */
+.quantity-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.quantity-selector h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+}
+
+.quantity-selector .quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  justify-content: flex-start;
+}
+
+.quantity-selector .quantity-btn {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ddd;
+  background: transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-selector .quantity-btn:hover:not(:disabled) {
+  background: #f8f8f8;
+  border-color: #333;
+}
+
+.quantity-selector .quantity-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.quantity-selector .quantity {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  min-width: 35px;
+  text-align: center;
+}

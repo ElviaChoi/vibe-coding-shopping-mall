@@ -1,0 +1,130 @@
+/* 상품 정보 */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.product-info .product-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.product-info .product-name {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.product-info .product-brand {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.product-info .product-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.product-info .current-price {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.product-info .original-price {
+  font-size: 1.2rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-info .discount-rate {
+  font-size: 0.9rem;
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.product-info .product-description {
+  margin: 0;
+}
+
+.product-info .product-description h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.product-info .product-description p {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.product-info .product-features {
+  margin: 0;
+}
+
+.product-info .product-features h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.product-info .product-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-info .product-features li {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.product-info .product-features li::before {
+  content: "•";
+  color: #999;
+  position: absolute;
+  left: 0;
+}
+
+.product-info .admin-notice {
+  width: 100%;
+  padding: 15px 20px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 0;
+  margin-bottom: 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-info .admin-notice p {
+  margin: 0;
+  color: #856404;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}

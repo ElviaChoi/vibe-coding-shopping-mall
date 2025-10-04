@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import useAuth from '../hooks/useAuth';
 import { useCart } from '../contexts/CartContext';
+import {
+  CustomerInfoForm,
+  ShippingInfoForm,
+  OrderItemsList,
+  PaymentMethodSelector,
+  PaymentSummary,
+  CheckoutActions
+} from '../components/checkout';
 
 function CheckoutPage() {
   const { user, loading: authLoading, logout } = useAuth();
@@ -226,219 +234,37 @@ function CheckoutPage() {
           <h1 className="checkout-title">주문/결제</h1>
 
           <form onSubmit={handleSubmit}>
-            <section className="checkout-section">
-              <h2 className="section-title">주문자 정보</h2>
-              <div className="form-grid">
-                <div className="form-group">
-                  <label>이름 *</label>
-                  <input
-                    type="text"
-                    value={customer.name}
-                    onChange={(e) => setCustomer({...customer, name: e.target.value})}
-                    placeholder="홍길동"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>이메일 *</label>
-                  <input
-                    type="email"
-                    value={customer.email}
-                    onChange={(e) => setCustomer({...customer, email: e.target.value})}
-                    placeholder="example@email.com"
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>전화번호 *</label>
-                  <input
-                    type="tel"
-                    value={customer.phone}
-                    onChange={(e) => setCustomer({...customer, phone: e.target.value})}
-                    placeholder="010-1234-5678"
-                    required
-                  />
-                </div>
-              </div>
-            </section>
+            <CustomerInfoForm 
+              customer={customer} 
+              onCustomerChange={setCustomer} 
+            />
 
-            <section className="checkout-section">
-              <h2 className="section-title">배송지 정보</h2>
-              <div className="form-group">
-                <label>수령인 *</label>
-                <input
-                  type="text"
-                  value={shipping.recipient}
-                  onChange={(e) => setShipping({...shipping, recipient: e.target.value})}
-                  placeholder="홍길동"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>전화번호 *</label>
-                <input
-                  type="tel"
-                  value={shipping.phone}
-                  onChange={(e) => setShipping({...shipping, phone: e.target.value})}
-                  placeholder="010-1234-5678"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>우편번호 *</label>
-                <div className="address-search">
-                  <input
-                    type="text"
-                    value={shipping.postalCode}
-                    onChange={(e) => setShipping({...shipping, postalCode: e.target.value})}
-                    placeholder="12345"
-                    required
-                  />
-                  <button type="button" onClick={handleAddressSearch} className="btn-search">
-                    우편번호 검색
-                  </button>
-                </div>
-              </div>
-              <div className="form-group">
-                <label>주소 *</label>
-                <input
-                  type="text"
-                  value={shipping.mainAddress}
-                  onChange={(e) => setShipping({...shipping, mainAddress: e.target.value})}
-                  placeholder="서울시 강남구 테헤란로 123"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>상세주소</label>
-                <input
-                  type="text"
-                  value={shipping.detailAddress}
-                  onChange={(e) => setShipping({...shipping, detailAddress: e.target.value})}
-                  placeholder="101동 101호"
-                />
-              </div>
-              <div className="form-group">
-                <label>배송 메시지</label>
-                <input
-                  type="text"
-                  value={shipping.message}
-                  onChange={(e) => setShipping({...shipping, message: e.target.value})}
-                  placeholder="문 앞에 놔주세요"
-                  maxLength={200}
-                />
-              </div>
-            </section>
+            <ShippingInfoForm 
+              shipping={shipping} 
+              onShippingChange={setShipping}
+              onAddressSearch={handleAddressSearch}
+            />
 
-            <section className="checkout-section">
-              <h2 className="section-title">주문 상품</h2>
-              <div className="order-items">
-                {cartItems.map((item) => (
-                  <div key={`${item.product._id}-${item.size}`} className="order-item">
-                    <div className="order-item-image">
-                      {item.product.images?.[0] && (
-                        <img src={item.product.images[0].url} alt={item.product.name} />
-                      )}
-                    </div>
-                    <div className="order-item-info">
-                      <h3>{item.product.name}</h3>
-                      <p className="order-item-option">
-                        사이즈: {item.size} / 수량: {item.quantity}개
-                      </p>
-                    </div>
-                    <div className="order-item-price">
-                      {(item.product.price * item.quantity).toLocaleString()}원
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <OrderItemsList cartItems={cartItems} />
 
-            <section className="checkout-section">
-              <h2 className="section-title">결제 수단</h2>
-              <div className="payment-methods">
-                <label className="payment-method">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="credit_card"
-                    checked={paymentMethod === 'credit_card'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                  />
-                  <span>신용카드</span>
-                </label>
-                <label className="payment-method">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="bank_transfer"
-                    checked={paymentMethod === 'bank_transfer'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                  />
-                  <span>계좌이체</span>
-                </label>
-                <label className="payment-method">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="kakao_pay"
-                    checked={paymentMethod === 'kakao_pay'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                  />
-                  <span>카카오페이</span>
-                </label>
-                <label className="payment-method">
-                  <input
-                    type="radio"
-                    name="payment"
-                    value="toss"
-                    checked={paymentMethod === 'toss'}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                  />
-                  <span>토스페이</span>
-                </label>
-              </div>
-            </section>
+            <PaymentMethodSelector 
+              paymentMethod={paymentMethod}
+              onPaymentMethodChange={setPaymentMethod}
+            />
 
-            <section className="checkout-section">
-              <h2 className="section-title">결제 금액</h2>
-              <div className="payment-summary">
-                <div className="summary-row">
-                  <span>총 상품 금액</span>
-                  <span>{totalAmount.toLocaleString()}원</span>
-                </div>
-                <div className="summary-row">
-                  <span>배송비</span>
-                  <span>{shippingFee === 0 ? '무료' : `${shippingFee.toLocaleString()}원`}</span>
-                </div>
-                <div className="summary-row total">
-                  <span>최종 결제 금액</span>
-                  <span className="total-amount">{finalAmount.toLocaleString()}원</span>
-                </div>
-              </div>
-            </section>
+            <PaymentSummary 
+              totalAmount={totalAmount}
+              shippingFee={shippingFee}
+              finalAmount={finalAmount}
+              agreePrivacy={agreePrivacy}
+              onAgreePrivacyChange={setAgreePrivacy}
+            />
 
-            <section className="checkout-section">
-              <div className="agreement">
-                <label className="agreement-checkbox">
-                  <input
-                    type="checkbox"
-                    checked={agreePrivacy}
-                    onChange={(e) => setAgreePrivacy(e.target.checked)}
-                  />
-                  <span>개인정보 수집 및 이용에 동의합니다 (필수)</span>
-                </label>
-              </div>
-            </section>
-
-            <div className="checkout-actions">
-              <Link to="/cart" className="btn-secondary">
-                장바구니로 돌아가기
-              </Link>
-              <button type="submit" className="btn-primary">
-                {finalAmount.toLocaleString()}원 결제하기
-              </button>
-            </div>
+            <CheckoutActions 
+              finalAmount={finalAmount}
+              onSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
           </form>
         </div>
       </div>

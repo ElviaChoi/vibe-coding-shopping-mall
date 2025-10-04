@@ -331,22 +331,6 @@
 }
 
 .login-btn {
-  color: #2c2c2c;
-  text-decoration: none;
-  font-weight: 400;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.2s;
-  border: none;
-  background: none;
-}
-
-.login-btn:hover {
-  color: #666;
-  background: none;
-}
-
-.signup-btn {
   background: #2c2c2c;
   color: white;
   text-decoration: none;
@@ -354,10 +338,28 @@
   padding: 8px 16px;
   border-radius: 4px;
   transition: all 0.2s;
+  border: 1px solid #2c2c2c;
+}
+
+.login-btn:hover {
+  background: #1a1a1a;
+  color: white;
+}
+
+.signup-btn {
+  background: transparent;
+  color: #2c2c2c;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  border: 1px solid #2c2c2c;
 }
 
 .signup-btn:hover {
-  background: #1a1a1a;
+  background: #2c2c2c;
+  color: white;
 }
 
 /* 반응형 디자인 */

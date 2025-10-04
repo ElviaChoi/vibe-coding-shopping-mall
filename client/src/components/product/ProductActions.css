@@ -1,0 +1,53 @@
+/* 상품 액션 버튼 */
+.product-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.product-actions .add-to-cart-btn,
+.product-actions .buy-now-btn {
+  flex: 1;
+  padding: 14px 30px;
+  margin-bottom: 20px;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.product-actions .add-to-cart-btn {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+.product-actions .add-to-cart-btn:hover:not(:disabled) {
+  background: #1a1a1a;
+}
+
+.product-actions .buy-now-btn {
+  background: transparent;
+  color: #333;
+  border-color: #ddd;
+}
+
+.product-actions .buy-now-btn:hover:not(:disabled) {
+  background: #eee;
+  color: #000;
+}
+
+.product-actions .add-to-cart-btn:disabled,
+.product-actions .buy-now-btn:disabled {
+  background: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #e0e0e0;
+}

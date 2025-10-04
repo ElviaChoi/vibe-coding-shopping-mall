@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { productAPI, cartAPI } from '../utils/api';
 import { useCart } from '../contexts/CartContext';
 import useAuth from '../hooks/useAuth';
+import {
+  ProductImageGallery,
+  ProductInfo
+} from '../components/product';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -121,10 +125,7 @@ const ProductDetailPage = () => {
     );
   }
 
-  const mainImage = product.images?.[selectedImageIndex] || product.images?.[0];
-  const totalStock = product.sizes?.reduce((sum, size) => sum + (size.stock || 0), 0) || 0;
   const selectedSizeStock = product.sizes?.find(size => size.size === selectedSize)?.stock || 0;
-  const hasMultipleImages = product.images && product.images.length > 1;
   const isAdmin = user?.user_type === 'admin';
 
   return (
@@ -134,119 +135,25 @@ const ProductDetailPage = () => {
         <div className="product-detail-page">
 
           <div className="product-detail-content">
-            {/* 상품 이미지 섹션 */}
-            <div className="product-images">
-              <div className="main-image">
-                {mainImage ? (
-                  <img 
-                    src={mainImage.url} 
-                    alt={mainImage.alt || product.name}
-                    className="product-main-image"
-                  />
-                ) : (
-                  <div className="image-placeholder no-image">
-                    📦
-                  </div>
-                )}
-              </div>
-              
-              {/* 썸네일 이미지들 */}
-              {hasMultipleImages && (
-                <div className="thumbnail-images">
-                  {product.images.map((image, index) => (
-                    <div 
-                      key={index}
-                      className={`thumbnail-image ${selectedImageIndex === index ? 'active' : ''}`}
-                      onClick={() => setSelectedImageIndex(index)}
-                    >
-                      <img 
-                        src={image.url} 
-                        alt={image.alt || `${product.name} 이미지 ${index + 1}`}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProductImageGallery 
+              images={product.images}
+              selectedImageIndex={selectedImageIndex}
+              onImageSelect={setSelectedImageIndex}
+            />
 
-            {/* 상품 정보 섹션 */}
-            <div className="product-info">
-              <div className="product-category">{product.mainCategory === 'women' ? '여성' : product.mainCategory === 'men' ? '남성' : '악세사리'}</div>
-              <h1 className="product-title">{product.name}</h1>
-              <div className="product-price">₩{product.price?.toLocaleString()}</div>
-              {product.description && (
-                <p className="product-description">
-                  {product.description}
-                </p>
-              )}
-
-              {/* 사이즈 선택 */}
-              {product.sizes && product.sizes.length > 0 && (
-                <div className="size-selection">
-                  <label className="selection-label">사이즈</label>
-                  <div className="size-buttons">
-                    {product.sizes.map((size) => (
-                      <button
-                        key={size.size}
-                        className={`size-btn ${selectedSize === size.size ? 'selected' : ''} ${size.stock === 0 ? 'out-of-stock' : ''}`}
-                        onClick={() => setSelectedSize(size.size)}
-                        disabled={size.stock === 0}
-                      >
-                        {size.size}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* 수량 선택 */}
-              <div className="quantity-selection">
-                <label className="selection-label">수량</label>
-                <div className="quantity-controls">
-                  <button 
-                    className="quantity-btn"
-                    onClick={() => handleQuantityChange(-1)}
-                    disabled={quantity <= 1}
-                  >
-                    -
-                  </button>
-                  <span className="quantity-display">{quantity}</span>
-                  <button 
-                    className="quantity-btn"
-                    onClick={() => handleQuantityChange(1)}
-                    disabled={quantity >= selectedSizeStock}
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              {/* 액션 버튼들 */}
-              {!isAdmin && (
-                <div className="product-actions-buttons">
-                  <button 
-                    className="btn-primary add-to-cart-btn"
-                    onClick={handleAddToCart}
-                    disabled={!selectedSize || selectedSizeStock === 0 || addingToCart}
-                  >
-                    {addingToCart ? '추가 중...' : '장바구니에 추가'}
-                  </button>
-                  <button 
-                    className="btn-secondary buy-now-btn"
-                    onClick={handleBuyNow}
-                    disabled={!selectedSize || selectedSizeStock === 0}
-                  >
-                    바로 구매
-                  </button>
-                </div>
-              )}
-              
-              {isAdmin && (
-                <div className="admin-notice">
-                  <p>👨‍💼 관리자 계정으로 로그인되어 있어 구매 기능이 비활성화되었습니다.</p>
-                </div>
-              )}
-
+            <div className="product-info-container">
+              <ProductInfo 
+                product={product}
+                selectedSize={selectedSize}
+                onSizeSelect={setSelectedSize}
+                quantity={quantity}
+                onQuantityChange={setQuantity}
+                selectedSizeStock={selectedSizeStock}
+                isAdmin={isAdmin}
+                onAddToCart={handleAddToCart}
+                addingToCart={addingToCart}
+                user={user}
+              />
 
               {/* 배송 및 반품 정보 */}
               <div className="shipping-info">

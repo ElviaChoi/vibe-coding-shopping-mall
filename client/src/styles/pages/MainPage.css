@@ -452,8 +452,8 @@
 
 .btn-outline {
   background: white;
-  color: #2c2c2c;
-  border: 0.5px solid #e0e0e0;
+  color: #555;
+  border: 1px solid #bbb;
   padding: 12px 24px;
   border-radius: 0;
   text-decoration: none;
