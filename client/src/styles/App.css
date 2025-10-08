@@ -21,6 +21,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .collection-item {
@@ -39,7 +42,7 @@
 
 .collection-image .image-placeholder,
 .collection-product-image {
-  height: 350px;
+  height: 450px;
   background: #e8e8e8;
 }
 
