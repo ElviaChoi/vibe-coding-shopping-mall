@@ -1,4 +1,5 @@
 import React from 'react';
+import { HiTrash } from 'react-icons/hi';
 
 const QuantityControls = ({ quantity, onQuantityChange, onRemove }) => {
   const handleDecrease = () => {

@@ -1,59 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './styles/App.css'
-import './styles/layouts/Navbar.css'
-import './styles/pages/MainPage.css'
-import './styles/pages/CartPage.css'
-import './styles/pages/ProductDetailPage.css'
-import './styles/pages/AuthPages.css'
-import './styles/pages/RecommendedPage.css'
-import './styles/pages/CheckoutPage.css'
-import './styles/layouts/Footer.css'
-import './styles/components/Button.css'
-import './styles/components/common/CommonComponents.css'
-import './styles/components/admin/OrderDetailModal.css'
-import './styles/components/admin/StatusBadges.css'
-import MainPage from './pages/MainPage'
-import SignupPage from './pages/SignupPage'
-import LoginPage from './pages/LoginPage'
-import AdminLayout from './components/admin/AdminLayout'
-import AdminDashboard from './pages/admin/AdminDashboard'
-import AdminOrders from './pages/admin/AdminOrders'
-import AdminProducts from './pages/admin/AdminProducts'
-import AddProductPage from './pages/admin/AddProductPage'
-import RecommendedPage from './pages/RecommendedPage'
-import ProductDetailPage from './pages/ProductDetailPage'
-import CategoryPage from './pages/CategoryPage'
-import CartPage from './pages/CartPage'
-import CheckoutPage from './pages/CheckoutPage'
-import OrderCompletePage from './pages/OrderCompletePage'
-import OrderFailPage from './pages/OrderFailPage'
-import OrderDetailPage from './pages/OrderDetailPage'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { CartProvider } from './contexts/CartContext'
+import { AppRoutes } from './routes'
+import './styles/index.js'
 
 function App() {
   return (
     <Router>
       <CartProvider>
         <div className="App">
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/recommended" element={<RecommendedPage />} />
-            <Route path="/product/:id" element={<ProductDetailPage />} />
-            <Route path="/women" element={<CategoryPage />} />
-            <Route path="/men" element={<CategoryPage />} />
-            <Route path="/accessories" element={<CategoryPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/order-complete" element={<OrderCompletePage />} />
-            <Route path="/order-fail" element={<OrderFailPage />} />
-            <Route path="/orders" element={<OrderDetailPage />} />
-            <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-            <Route path="/admin/orders" element={<AdminLayout><AdminOrders /></AdminLayout>} />
-            <Route path="/admin/products" element={<AdminLayout><AdminProducts /></AdminLayout>} />
-            <Route path="/admin/add-product" element={<AdminLayout><AddProductPage /></AdminLayout>} />
-          </Routes>
+          <AppRoutes />
         </div>
       </CartProvider>
     </Router>

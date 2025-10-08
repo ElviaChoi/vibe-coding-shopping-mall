@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CartSummary = ({ totalAmount, itemCount, onCheckout }) => {
-  const shippingFee = totalAmount >= 50000 ? 0 : 3000;
+  const shippingFee = totalAmount >= 30000 ? 0 : 2000;
   const finalAmount = totalAmount + shippingFee;
 
   return (
@@ -21,9 +21,9 @@ const CartSummary = ({ totalAmount, itemCount, onCheckout }) => {
           <span>배송비</span>
           <span>
             {shippingFee === 0 ? '무료' : `${shippingFee.toLocaleString()}원`}
-            {totalAmount < 50000 && (
+            {totalAmount < 30000 && (
               <small className="shipping-note">
-                (5만원 이상 구매시 무료배송)
+                {' '}(3만원 이상 구매시 무료배송)
               </small>
             )}
           </span>
