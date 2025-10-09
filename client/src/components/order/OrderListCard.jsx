@@ -2,6 +2,21 @@ import React from 'react';
 import { getStatusLabel } from '../../utils/orderUtils';
 
 const OrderListCard = ({ order, onOrderClick }) => {
+  console.log('OrderListCard order data:', order);
+  console.log('OrderListCard totalAmount:', order?.totalAmount);
+  console.log('OrderListCard payment:', order?.payment);
+  
+  // order가 없거나 필수 필드가 없는 경우 처리
+  if (!order) {
+    console.error('OrderListCard: order is null or undefined');
+    return <div className="order-card error">주문 정보를 불러올 수 없습니다.</div>;
+  }
+
+  if (!order.items || !Array.isArray(order.items)) {
+    console.error('OrderListCard: order.items is not an array:', order.items);
+    return <div className="order-card error">주문 상품 정보가 없습니다.</div>;
+  }
+  
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('ko-KR', {
       year: 'numeric',
@@ -11,14 +26,37 @@ const OrderListCard = ({ order, onOrderClick }) => {
   };
 
   const getTotalItems = (items) => {
-    return items.reduce((total, item) => total + item.quantity, 0);
+    return items?.reduce((total, item) => total + (item.quantity || 0), 0) || 0;
+  };
+
+  const getTotalAmount = (order) => {
+    // payment 객체에서 총액 가져오기
+    if (order.payment?.finalAmount) {
+      return order.payment.finalAmount;
+    }
+    if (order.payment?.totalAmount) {
+      return order.payment.totalAmount;
+    }
+    if (order.totalAmount) {
+      return order.totalAmount;
+    }
+    // items에서 계산
+    if (order.items) {
+      return order.items.reduce((total, item) => {
+        const itemPrice = item.product?.price || 0;
+        const quantity = item.quantity || 0;
+        return total + (itemPrice * quantity);
+      }, 0);
+    }
+    return 0;
   };
 
   return (
     <div className="order-card" onClick={() => onOrderClick(order)}>
+      {/* 주문 헤더 */}
       <div className="order-header">
         <div className="order-info">
-          <h3 className="order-number">주문번호: {order.orderNumber}</h3>
+          <h3 className="order-number">{order.orderNumber}</h3>
           <span className="order-date">{formatDate(order.createdAt)}</span>
         </div>
         <div className="order-status">
@@ -28,34 +66,37 @@ const OrderListCard = ({ order, onOrderClick }) => {
         </div>
       </div>
       
-      <div className="order-items-preview">
-        {order.items.slice(0, 3).map((item, index) => (
-          <div key={index} className="preview-item">
-            <div className="preview-image">
-              {item.product.images?.[0] && (
-                <img src={item.product.images[0].url} alt={item.product.name} />
-              )}
-            </div>
-            <div className="preview-info">
-              <span className="preview-name">{item.product.name}</span>
-              <span className="preview-option">사이즈: {item.size} / 수량: {item.quantity}</span>
-            </div>
-          </div>
-        ))}
-        {order.items.length > 3 && (
-          <div className="more-items">
-            +{order.items.length - 3}개 더보기
-          </div>
-        )}
+      {/* 구분선 */}
+      <div className="divider"></div>
+      
+      {/* 첫 번째 상품만 표시 */}
+      <div className="order-item">
+        <div className="item-image">
+          {order.items?.[0]?.product?.images?.[0] && (
+            <img src={order.items[0].product.images[0].url} alt={order.items[0].product.name || '상품'} />
+          )}
+        </div>
+        <div className="item-info">
+          <span className="item-name">{order.items?.[0]?.product?.name || '상품명'}</span>
+          <span className="item-details">{order.items?.[0]?.size} / {order.items?.[0]?.quantity}개</span>
+        </div>
       </div>
       
+      {/* 구분선 */}
+      <div className="divider"></div>
+      
+      {/* 주문 요약 및 버튼 */}
       <div className="order-footer">
-        <div className="order-total">
-          총 {getTotalItems(order.items)}개 상품
+        <div className="order-summary">
+          <span className="total-label">총 결제 금액</span>
+          <span className="total-amount">₩{getTotalAmount(order).toLocaleString()}</span>
         </div>
-        <div className="order-amount">
-          {order.totalAmount.toLocaleString()}원
-        </div>
+        <button className="btn-view-detail" onClick={(e) => {
+          e.stopPropagation();
+          onOrderClick(order);
+        }}>
+          주문 상세보기 →
+        </button>
       </div>
     </div>
   );

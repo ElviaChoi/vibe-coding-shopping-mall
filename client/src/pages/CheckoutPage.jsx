@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import useAuth from '../hooks/useAuth';
@@ -61,6 +61,7 @@ function CheckoutPage() {
 
   const [paymentMethod, setPaymentMethod] = useState('credit_card');
   const [agreePrivacy, setAgreePrivacy] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const shippingFee = totalAmount >= 30000 ? 0 : 2000;
   const finalAmount = totalAmount + shippingFee;
 
@@ -104,6 +105,7 @@ function CheckoutPage() {
     }, async (rsp) => {
       if (rsp.success) {
         try {
+          setIsLoading(true);
           const orderData = {
             userId: user?._id,
             customer: {
@@ -168,6 +170,7 @@ function CheckoutPage() {
           }
         } catch (error) {
           console.error('❌ 주문 저장 오류:', error);
+          setIsLoading(false);
           navigate('/order-fail', {
             state: {
               errorMessage: `서버 오류가 발생했습니다. ${error.message}`,
@@ -177,6 +180,7 @@ function CheckoutPage() {
         }
       } else {
         console.error('결제 실패:', rsp);
+        setIsLoading(false);
         navigate('/order-fail', {
           state: {
             errorMessage: rsp.error_msg || '결제에 실패했습니다.',
@@ -205,6 +209,7 @@ function CheckoutPage() {
       return;
     }
 
+    setIsLoading(true);
     handlePayment();
   };
 
@@ -264,6 +269,7 @@ function CheckoutPage() {
               finalAmount={finalAmount}
               onSubmit={handleSubmit}
               isLoading={isLoading}
+              agreePrivacy={agreePrivacy}
             />
           </form>
         </div>

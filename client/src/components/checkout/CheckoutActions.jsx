@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CheckoutActions = ({ finalAmount, onSubmit, isLoading }) => {
+const CheckoutActions = ({ finalAmount, onSubmit, isLoading, agreePrivacy }) => {
   return (
     <div className="checkout-actions">
       <Link to="/cart" className="btn-secondary">
@@ -11,7 +11,7 @@ const CheckoutActions = ({ finalAmount, onSubmit, isLoading }) => {
         type="submit" 
         className="btn-primary"
         onClick={onSubmit}
-        disabled={isLoading}
+        disabled={isLoading || !agreePrivacy}
       >
         {isLoading ? '결제 중...' : `${finalAmount.toLocaleString()}원 결제하기`}
       </button>

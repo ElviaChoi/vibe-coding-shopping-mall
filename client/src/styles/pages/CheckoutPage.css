@@ -233,6 +233,79 @@
   cursor: not-allowed;
 }
 
+/* Checkout Actions */
+.checkout-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.checkout-actions .btn-secondary {
+  flex: 1;
+  background: white;
+  color: #2c2c2c;
+  border: 1px solid #ddd;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.checkout-actions .btn-secondary:hover {
+  background: #f8f9fa;
+  border-color: #bbb;
+}
+
+.checkout-actions .btn-primary {
+  flex: 2;
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #2c2c2c;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkout-actions .btn-primary:hover:not(:disabled) {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.checkout-actions .btn-primary:disabled {
+  background: #ccc;
+  color: #999;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Agreement Section */
+.agreement {
+  padding: 20px 0;
+}
+
+.agreement-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.agreement-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
   .checkout-container {
@@ -264,5 +337,15 @@
   .order-item-image {
     width: 80px;
     height: 80px;
+  }
+  
+  .checkout-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .checkout-actions .btn-secondary,
+  .checkout-actions .btn-primary {
+    flex: 1;
   }
 }

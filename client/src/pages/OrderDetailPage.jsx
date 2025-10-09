@@ -4,7 +4,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import useAuth from '../hooks/useAuth';
 import { orderAPI } from '../utils/api';
-import { getStatusLabel } from '../utils/orderUtils';
+import { getStatusLabel, getStatusStep } from '../utils/orderUtils';
 import { OrderListCard, OrderStatusSteps, OrderItemsList } from '../components/order';
 import OrderTabs from '../components/admin/OrderTabs';
 import OrderDetailModal from '../components/admin/OrderDetailModal';
@@ -50,6 +50,27 @@ function OrderDetailPage() {
       fetchOrders();
     }
   }, [user, authLoading, navigate, location.state?.refresh]);
+
+  // 탭별 주문 개수 계산
+  const getTabCount = (status) => {
+    if (status === 'all') return orders.length;
+    return orders.filter(order => order.status === status).length;
+  };
+
+  const tabCounts = {
+    all: getTabCount('all'),
+    pending: getTabCount('pending'),
+    paid: getTabCount('paid'),
+    preparing: getTabCount('preparing'),
+    shipping: getTabCount('shipping'),
+    delivered: getTabCount('delivered'),
+    cancelled: getTabCount('cancelled')
+  };
+
+  // 필터링된 주문 목록
+  const filteredOrders = activeTab === 'all' 
+    ? orders 
+    : orders.filter(order => order.status === activeTab);
 
   if (loading || authLoading) {
     return (
@@ -190,21 +211,6 @@ function OrderDetailPage() {
     );
   };
 
-  const filteredOrders = orders.filter(order => {
-    if (activeTab === 'all') return true;
-    if (activeTab === 'paid') return ['paid', 'preparing', 'pending'].includes(order.status);
-    if (activeTab === 'shipped') return order.status === 'shipping';
-    if (activeTab === 'delivered') return order.status === 'delivered';
-    return true;
-  });
-
-  const getTabCount = (tab) => {
-    if (tab === 'all') return orders.length;
-    if (tab === 'paid') return orders.filter(o => ['paid', 'preparing', 'pending'].includes(o.status)).length;
-    if (tab === 'shipped') return orders.filter(o => o.status === 'shipping').length;
-    if (tab === 'delivered') return orders.filter(o => o.status === 'delivered').length;
-    return 0;
-  };
 
   return (
     <div className="App">
@@ -214,7 +220,6 @@ function OrderDetailPage() {
           <div className="order-header">
             <div>
               <h1 className="page-title">내 주문 목록</h1>
-              <p className="page-subtitle">주문하신 상품의 배송 현황을 확인하실 수 있습니다.</p>
             </div>
           </div>
 
@@ -222,7 +227,7 @@ function OrderDetailPage() {
             <OrderTabs 
               activeTab={activeTab}
               onTabChange={setActiveTab}
-              getTabCount={getTabCount}
+              tabCounts={tabCounts}
             />
           )}
 
