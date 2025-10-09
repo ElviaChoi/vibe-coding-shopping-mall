@@ -146,6 +146,11 @@
   align-items: center;
   padding: 16px 0;
   border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.order-item:hover {
+  background-color: #f9fafb;
 }
 
 .order-item:last-child {
@@ -184,6 +189,7 @@
 .product-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   padding: 16px 0;
   border-bottom: 1px solid #f3f4f6;
@@ -207,21 +213,29 @@
   flex-shrink: 0;
 }
 
-.product-info {
+.admin-dashboard .products-list .product-item .product-info {
   flex: 1;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
 
-.product-name {
+.admin-dashboard .products-list .product-item .product-info .product-name {
   font-size: 14px;
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 4px 0;
+  text-align: center !important;
+  width: 100% !important;
 }
 
-.product-sales {
+.admin-dashboard .products-list .product-item .product-info .product-sales {
   font-size: 12px;
   color: #6b7280;
   margin: 0;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 /* Loading, Error, Empty States */

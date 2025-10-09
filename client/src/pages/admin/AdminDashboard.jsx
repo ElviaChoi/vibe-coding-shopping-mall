@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   HiCube, 
   HiUsers, 
@@ -10,6 +11,7 @@ import { getRelativeTime, formatAmount } from '../../utils/formatUtils';
 import '../../styles/pages/admin/AdminDashboard.css';
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
   const [recentOrders, setRecentOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -140,7 +142,12 @@ const AdminDashboard = () => {
           ) : (
             <div className="orders-list">
               {recentOrders.map((order, index) => (
-                <div key={order._id || index} className="order-item">
+                <div 
+                  key={order._id || index} 
+                  className="order-item"
+                  onClick={() => navigate('/admin/orders')}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div className="order-info">
                     <div className="order-id">#{order.orderNumber || order._id?.slice(-4) || 'N/A'}</div>
                     <div className="order-details">

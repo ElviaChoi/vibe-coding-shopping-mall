@@ -49,6 +49,10 @@ const ProductTable = ({
                 <tr key={product._id}>
                   <td className="product-cell">
                     <div className="product-info">
+                      <div className="product-details">
+                        <div className="product-name">{product.name}</div>
+                        <div className="product-id">SKU: {product.sku}</div>
+                      </div>
                       <div className="product-image">
                         {mainImage ? (
                           <img 
@@ -59,10 +63,6 @@ const ProductTable = ({
                         ) : (
                           <div className="product-emoji">📦</div>
                         )}
-                      </div>
-                      <div className="product-details">
-                        <div className="product-name">{product.name}</div>
-                        <div className="product-id">SKU: {product.sku}</div>
                       </div>
                     </div>
                   </td>
