@@ -237,10 +237,190 @@
 /* 뉴스레터 메시지 */
 .newsletter-message {
   text-align: center;
-  color: #2e7d32;
   font-size: 0.9rem;
-  margin-top: 10px;
+  margin-top: 15px;
   font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.newsletter-message.success {
+  color: #2e7d32;
+  background: #e8f5e8;
+  border-color: #c8e6c9;
+}
+
+.newsletter-message.error {
+  color: #d32f2f;
+  background: #ffebee;
+  border-color: #ffcdd2;
+}
+
+.newsletter-message.info {
+  color: #1976d2;
+  background: #e3f2fd;
+  border-color: #bbdefb;
+}
+
+.newsletter-unsubscribe {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.unsubscribe-btn {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unsubscribe-btn:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.unsubscribe-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 뉴스레터 구독 상태 표시 */
+.newsletter-status {
+  margin-top: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subscription-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  width: 100%;
+}
+
+.subscription-status.subscribed {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.subscription-status.not-subscribed {
+  background: #f5f5f5;
+  color: #666;
+  border: 1px solid #e0e0e0;
+}
+
+.status-icon {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.status-text {
+  flex: 1;
+}
+
+.unsubscribe-toggle-btn {
+  background: transparent;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.unsubscribe-toggle-btn:hover:not(:disabled) {
+  background: #d32f2f;
+  color: white;
+}
+
+.unsubscribe-toggle-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 구독 해지 확인 폼 */
+.newsletter-unsubscribe-form {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff3e0;
+  border: 1px solid #ffcc02;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.unsubscribe-confirm-text {
+  margin: 0 0 16px 0;
+  color: #e65100;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.unsubscribe-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.unsubscribe-confirm-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.unsubscribe-confirm-btn:hover:not(:disabled) {
+  background: #b71c1c;
+}
+
+.unsubscribe-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.unsubscribe-cancel-btn {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.unsubscribe-cancel-btn:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.unsubscribe-cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 

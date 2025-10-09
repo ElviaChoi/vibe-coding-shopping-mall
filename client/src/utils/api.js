@@ -154,3 +154,32 @@ export const orderAPI = {
     });
   }
 };
+
+export const newsletterAPI = {
+  subscribe: async (email, preferences = {}) => {
+    return apiRequest('/newsletters/subscribe', {
+      method: 'POST',
+      body: JSON.stringify({ email, preferences })
+    });
+  },
+
+  unsubscribe: async (email) => {
+    return apiRequest('/newsletters/unsubscribe', {
+      method: 'POST',
+      body: JSON.stringify({ email })
+    });
+  },
+
+  checkStatus: async (email) => {
+    return apiRequest(`/newsletters/status/${encodeURIComponent(email)}`);
+  },
+
+  getSubscribers: async (params = {}) => {
+    const queryString = new URLSearchParams(params).toString();
+    return apiRequest(`/newsletters/subscribers${queryString ? `?${queryString}` : ''}`);
+  },
+
+  getStats: async () => {
+    return apiRequest('/newsletters/stats');
+  }
+};

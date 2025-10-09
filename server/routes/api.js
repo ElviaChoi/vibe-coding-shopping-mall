@@ -4,6 +4,7 @@ const userRoutes = require('./users');
 const productRoutes = require('./products');
 const cartRoutes = require('./carts');
 const orderRoutes = require('./orders');
+const newsletterRoutes = require('./newsletters');
 
 router.get('/status', (req, res) => {
   res.json({
@@ -17,5 +18,6 @@ router.use('/users', userRoutes);
 router.use('/products', productRoutes);
 router.use('/carts', cartRoutes);
 router.use('/orders', orderRoutes);
+router.use('/newsletters', newsletterRoutes);
 
 module.exports = router;
