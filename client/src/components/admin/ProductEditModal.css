@@ -1,0 +1,134 @@
+.product-edit-form {
+  padding: 0;
+}
+
+.product-edit-form .form-group {
+  margin-bottom: 20px;
+}
+
+.product-edit-form .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.product-edit-form .form-group input,
+.product-edit-form .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.product-edit-form .form-group input:focus,
+.product-edit-form .form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.product-edit-form .form-group input:disabled,
+.product-edit-form .form-group textarea:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.product-edit-form .checkbox-group {
+  margin-bottom: 16px;
+}
+
+.product-edit-form .checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: #374151;
+}
+
+.product-edit-form .checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin-right: 12px;
+  margin-bottom: 0;
+}
+
+.product-edit-form .checkbox-text {
+  font-size: 14px;
+}
+
+.product-edit-form .error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.product-edit-form .modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.product-edit-form .btn-primary,
+.product-edit-form .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.product-edit-form .btn-primary {
+  background: #1a1a1a;
+  color: white;
+}
+
+.product-edit-form .btn-primary:hover:not(:disabled) {
+  background: #333333;
+}
+
+.product-edit-form .btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.product-edit-form .btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.product-edit-form .btn-secondary:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.product-edit-form .btn-secondary:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .product-edit-form .modal-actions {
+    flex-direction: column;
+  }
+  
+  .product-edit-form .btn-primary,
+  .product-edit-form .btn-secondary {
+    width: 100%;
+  }
+}

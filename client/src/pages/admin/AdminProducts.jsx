@@ -5,6 +5,8 @@ import { HiPlus } from 'react-icons/hi';
 import { LoadingSpinner, ErrorMessage, Pagination } from '../../components/common';
 import ProductTable from '../../components/admin/ProductTable';
 import ProductSearch from '../../components/admin/ProductSearch';
+import ProductEditModal from '../../components/admin/ProductEditModal';
+import ErrorBoundary from '../../components/common/ErrorBoundary';
 import '../../styles/pages/admin/AdminProducts.css';
 
 const AdminProducts = () => {
@@ -17,6 +19,8 @@ const AdminProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
   const loadProducts = async (page = 1, search = '') => {
     try {
       setLoading(true);
@@ -73,8 +77,28 @@ const AdminProducts = () => {
   };
 
   const handleEditProduct = (productId) => {
-    alert('상품 수정 기능은 추후 구현될 예정입니다.');
+    const product = products.find(p => p._id === productId);
+    if (product) {
+      setEditingProduct(product);
+      setShowEditModal(true);
+    }
     setShowActionsMenu(null);
+  };
+
+  const handleEditModalClose = () => {
+    setShowEditModal(false);
+    setEditingProduct(null);
+  };
+
+  const handleEditSave = (updatedProduct) => {
+    // 상품 목록 업데이트
+    setProducts(prevProducts => 
+      prevProducts.map(p => 
+        p._id === updatedProduct._id ? updatedProduct : p
+      )
+    );
+    setShowEditModal(false);
+    setEditingProduct(null);
   };
   const handleToggleFeatured = async (productId, currentFeatured) => {
     try {
@@ -179,6 +203,16 @@ const AdminProducts = () => {
           />
         )}
       </div>
+
+      {/* 상품 수정 모달 */}
+      <ErrorBoundary>
+        <ProductEditModal
+          product={editingProduct}
+          isOpen={showEditModal}
+          onClose={handleEditModalClose}
+          onSave={handleEditSave}
+        />
+      </ErrorBoundary>
     </div>
   );
 };
