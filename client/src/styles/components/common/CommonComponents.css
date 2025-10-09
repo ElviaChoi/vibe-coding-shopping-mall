@@ -90,6 +90,7 @@
   border: 1px solid #bbb;
   padding: 12px 24px;
   border-radius: 0;
+  text-decoration: none;
 }
 
 .btn-outline:hover {

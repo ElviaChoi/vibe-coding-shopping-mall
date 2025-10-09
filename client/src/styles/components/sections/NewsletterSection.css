@@ -29,7 +29,7 @@
 }
 
 .newsletter-btn {
-  background: #2c2c2c;
+  background: #000000;
   color: white;
   padding: 14px 24px;
   border: none;
@@ -41,7 +41,7 @@
 }
 
 .newsletter-btn:hover {
-  background: #1a1a1a;
+  background: #2c2c2c;
 }
 
 .newsletter-btn:disabled {
