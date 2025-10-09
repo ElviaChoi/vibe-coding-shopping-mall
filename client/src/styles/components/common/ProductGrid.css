@@ -43,28 +43,28 @@
 /* 배지 스타일 */
 .sale-badge {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 12px;
+  left: 12px;
   background: #000;
   color: white;
-  padding: 2px 4px;
-  font-size: 0.6rem;
+  padding: 4px 8px;
+  font-size: 0.75rem;
   font-weight: 600;
   z-index: 2;
-  border-radius: 1px;
+  border-radius: 0;
 }
 
 .sold-out-badge {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  background: #dc3545;
+  top: 12px;
+  right: 12px;
+  background: #6c757d;
   color: white;
   padding: 4px 8px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   z-index: 2;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* 상품 정보 */
