@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './StatusBadge.css';
 
 const STATUS_CONFIG = {
@@ -14,7 +14,7 @@ const STATUS_CONFIG = {
   featured: { color: '#f39c12', text: '추천' }
 };
 
-const StatusBadge = ({ 
+const StatusBadge = React.memo(({ 
   status, 
   clickable = false, 
   onClick, 
@@ -23,12 +23,12 @@ const StatusBadge = ({
 }) => {
   const config = STATUS_CONFIG[status] || { color: '#6c757d', text: status };
   
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
     if (clickable && onClick) {
       e.stopPropagation();
       onClick(e);
     }
-  };
+  }, [clickable, onClick]);
 
   return (
     <span 
@@ -42,6 +42,8 @@ const StatusBadge = ({
       )}
     </span>
   );
-};
+});
+
+StatusBadge.displayName = 'StatusBadge';
 
 export default StatusBadge;

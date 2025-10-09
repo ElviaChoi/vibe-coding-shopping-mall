@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { HiTrash } from 'react-icons/hi';
 import QuantityControls from './QuantityControls';
 
-const CartItem = ({ item, onQuantityChange, onRemove }) => {
-  const handleQuantityChange = (newQuantity) => {
+const CartItem = React.memo(({ item, onQuantityChange, onRemove }) => {
+  const handleQuantityChange = useCallback((newQuantity) => {
     onQuantityChange(item.product._id, item.size, newQuantity);
-  };
+  }, [onQuantityChange, item.product._id, item.size]);
 
-  const handleRemove = () => {
+  const handleRemove = useCallback(() => {
     onRemove(item.product._id, item.size);
-  };
+  }, [onRemove, item.product._id, item.size]);
 
   return (
     <div className="cart-item">
@@ -56,6 +56,8 @@ const CartItem = ({ item, onQuantityChange, onRemove }) => {
       </div>
     </div>
   );
-};
+});
+
+CartItem.displayName = 'CartItem';
 
 export default CartItem;
