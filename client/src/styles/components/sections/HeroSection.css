@@ -1,0 +1,354 @@
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+              url('https://image.thehyundai.com/static/image/sect/hnm/cpnt/hnmmain2926060020250926105719.jpg') center top/cover;
+  padding: 150px 0 0 0;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section .hero-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-section .women-btn,
+.hero-section .men-btn {
+  background: #2c2c2c;
+  color: white;
+  border: 2px solid #2c2c2c;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.hero-section .women-btn:hover,
+.hero-section .men-btn:hover {
+  background: #4a4a4a;
+  color: white;
+  border-color: #4a4a4a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.women-btn.inverted {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.men-btn.inverted {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #c0c0c0;
+  background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
+  border-radius: 8px;
+}
+
+/* 데스크톱에서 히어로 섹션 왼쪽 정렬 */
+@media (min-width: 1025px) {
+  .hero-section {
+    display: block !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-items: flex-start !important;
+    padding-top: 250px !important;
+    padding: 140px 0 100px 0;
+  }
+  
+  .hero-section .hero-content {
+    display: block !important;
+    text-align: left !important;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .hero-title,
+  .hero-description,
+  .hero-buttons {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+  }
+  
+  .hero-buttons {
+    justify-content: flex-start !important;
+  }
+  
+  .button-wrapper {
+    justify-content: flex-start !important;
+  }
+  
+  .hero-section .women-btn,
+  .hero-section .men-btn {
+    font-size: 1.1rem;
+    padding: 16px 32px;
+  }
+  
+  .hero-section .women-btn:hover,
+  .hero-section .men-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .hero-image {
+    display: none !important;
+  }
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 100px 0 60px 0;
+  }
+
+  .hero-section .hero-content {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .hero-section .women-btn,
+  .hero-section .men-btn {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+
+  .hero-section .women-btn:hover,
+  .hero-section .men-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-buttons .button-wrapper {
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+  }
+
+  .placeholder-image {
+    height: 250px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 160px 0 15px;
+    min-height: auto;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .hero-section .hero-content {
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .hero-title {
+    font-size: 3.6rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    line-height: 1.3;
+    word-break: keep-all;
+    white-space: normal;
+  }
+
+  .hero-description {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    max-width: 100%;
+    line-height: 1.7;
+    word-break: keep-all;
+    white-space: normal;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .hero-buttons .button-wrapper {
+    flex-direction: column;
+    width: auto;
+    max-width: 240px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .women-btn,
+  .men-btn {
+    width: auto;
+    min-width: 180px;
+    padding: 14px 32px;
+    text-align: center;
+  }
+  
+  .hero-section .women-btn,
+  .hero-section .men-btn {
+    background: #2c2c2c !important;
+    color: white !important;
+    border: 2px solid #2c2c2c !important;
+  }
+  
+  .hero-section .women-btn:hover,
+  .hero-section .men-btn:hover {
+    background: #4a4a4a !important;
+    color: white !important;
+    border: 2px solid #4a4a4a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .placeholder-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 3.0rem;
+    font-weight: 500;
+    line-height: 1.3;
+    word-break: keep-all;
+    white-space: normal;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    word-break: keep-all;
+    white-space: normal;
+  }
+
+  .placeholder-image {
+    height: 150px;
+  }
+}
+

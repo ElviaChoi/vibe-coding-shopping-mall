@@ -6,6 +6,7 @@ import LazyImage from '../components/common/LazyImage';
 import ErrorBoundary from '../components/common/ErrorBoundary';
 import { productAPI } from '../utils/api';
 import useAuth from '../hooks/useAuth';
+import '../styles/components/common/ProductGrid.css';
 
 const RecommendedPage = () => {
   const { user, loading: authLoading, error: authError, logout } = useAuth();

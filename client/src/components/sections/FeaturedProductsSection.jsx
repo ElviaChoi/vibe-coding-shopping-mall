@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { productAPI } from '../../utils/api';
+import '../../styles/components/sections/FeaturedProductsSection.css';
+import '../../styles/components/common/ProductGrid.css';
 
 function FeaturedProductsSection() {
   const [products, setProducts] = useState([]);

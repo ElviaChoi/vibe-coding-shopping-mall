@@ -1,27 +1,4 @@
-/* 에러 배너 */
-.error-banner {
-  background: #ffebee;
-  color: #c62828;
-  padding: 12px 20px;
-  text-align: center;
-  border-bottom: 1px solid #ffcdd2;
-  margin-top: 70px;
-}
-
-.error-banner p {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-/* 뉴스레터 메시지 */
-.newsletter-message {
-  text-align: center;
-  color: #2e7d32;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  font-weight: 500;
-}
+/* 공통 컴포넌트 스타일 */
 
 /* 섹션 공통 스타일 */
 .section-container {
@@ -65,32 +42,126 @@
 .btn-primary {
   background: #2c2c2c;
   color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
 }
 
 .btn-primary:hover {
   background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-secondary {
-  background: white;
+  background: transparent;
   color: #2c2c2c;
   border: 2px solid #2c2c2c;
+  padding: 14px 28px;
+  border-radius: 8px;
 }
 
 .btn-secondary:hover {
-  background: #f8f9fa;
-  color: #000;
+  background: #2c2c2c;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary:disabled {
+  background: transparent;
+  color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-outline {
   background: transparent;
   color: #555;
   border: 1px solid #bbb;
+  padding: 12px 24px;
+  border-radius: 0;
 }
 
 .btn-outline:hover {
   background: #2c2c2c;
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 버튼 크기 변형 */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 18px 36px;
+  font-size: 1.125rem;
+}
+
+/* 버튼 색상 변형 */
+.btn-success {
+  background: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #218838;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+.btn-warning {
+  background: #ffc107;
+  color: #212529;
+  border: none;
+}
+
+.btn-warning:hover {
+  background: #e0a800;
+}
+
+.btn-info {
+  background: #17a2b8;
+  color: white;
+  border: none;
+}
+
+.btn-info:hover {
+  background: #138496;
+}
+
+/* 버튼 그룹 */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* 폼 공통 스타일 */
@@ -144,20 +215,46 @@
   transform: translateY(-2px);
 }
 
-/* 로딩 스피너 */
-.loading-spinner {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #2c2c2c;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+/* 에러 배너 */
+.error-banner {
+  background: #ffebee;
+  color: #c62828;
+  padding: 12px 20px;
+  text-align: center;
+  border-bottom: 1px solid #ffcdd2;
+  margin-top: 70px;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.error-banner p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Error Boundary */
+.error-boundary {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+}
+
+.error-boundary-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.error-boundary-content h2 {
+  font-size: 1.5rem;
+  color: #dc3545;
+  margin-bottom: 16px;
+}
+
+.error-boundary-content p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 24px;
 }
 
 /* 유틸리티 클래스 */
@@ -201,3 +298,32 @@
 
 .w-full { width: 100%; }
 .h-full { height: 100%; }
+
+/* 반응형 버튼 스타일 */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+  
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .btn-group-vertical {
+    gap: 8px;
+  }
+}

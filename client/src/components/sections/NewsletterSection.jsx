@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { newsletterAPI } from '../../utils/api';
+import '../../styles/components/sections/NewsletterSection.css';
 
 function NewsletterSection() {
   const [email, setEmail] = useState('');

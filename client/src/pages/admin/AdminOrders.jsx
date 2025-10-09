@@ -119,6 +119,14 @@ const AdminOrders = () => {
         // 탭 카운트 새로고침
         loadTabCounts();
         setStatusDropdownOpen(null);
+        
+        // 모달에 표시 중인 주문 정보도 즉시 업데이트
+        if (selectedOrder && selectedOrder._id === orderId) {
+          setSelectedOrder(prev => ({
+            ...prev,
+            status: newStatus
+          }));
+        }
       } else {
         alert('주문 상태 업데이트에 실패했습니다: ' + response.message);
       }

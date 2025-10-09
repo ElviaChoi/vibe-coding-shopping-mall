@@ -4,7 +4,7 @@ import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import useAuth from '../hooks/useAuth';
 import { useCart } from '../contexts/CartContext';
-import '../styles/OrderComplete.css';
+import '../styles/pages/OrderCompletePage.css';
 
 function OrderCompletePage() {
   const { user, loading: authLoading, logout } = useAuth();

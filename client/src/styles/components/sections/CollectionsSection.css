@@ -1,0 +1,158 @@
+/* Collections Section */
+.collections-section {
+  background: #fafafa;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.collection-item {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+.collection-item:hover {
+  transform: translateY(-5px);
+}
+
+.collection-item.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.collection-item.disabled:hover {
+  transform: none;
+}
+
+.collection-image {
+  margin-bottom: 0;
+}
+
+.collection-image .image-placeholder {
+  height: 450px;
+  background: #e8e8e8;
+}
+
+.collection-image .women {
+  background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
+}
+
+.collection-image .men {
+  background: linear-gradient(135deg, #f0f0f0 0%, #d8d8d8 100%);
+}
+
+.collection-image .accessories {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
+}
+
+.collection-product-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #e8e8e8;
+}
+
+.collection-item:hover .collection-product-image {
+  transform: none;
+}
+
+.collection-info h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #2c2c2c;
+  margin: 20px 0 8px;
+}
+
+.collection-info p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 20px;
+}
+
+.collection-link {
+  color: #2c2c2c;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.no-products {
+  font-size: 0.85rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* 로딩 플레이스홀더 */
+.collection-item.loading {
+  pointer-events: none;
+}
+
+.loading-placeholder {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+.loading-text {
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+.loading-text.short {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .collection-product-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .collection-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .collection-info p {
+    font-size: 0.95rem;
+  }
+}
+

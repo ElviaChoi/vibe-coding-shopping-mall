@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import '../../styles/components/sections/HeroSection.css';
 
 function HeroSection() {
   const [hoveredButton, setHoveredButton] = useState(null);
