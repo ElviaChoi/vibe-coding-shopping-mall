@@ -72,8 +72,8 @@
 }
 
 .product-image {
-  width: 100%;
-  height: 900px;
+  width: 100% !important;
+  height: 500px !important;
   overflow: hidden;
   background: #f8f9fa;
   margin-bottom: 15px;
@@ -1079,7 +1079,7 @@
   
   .product-image .image-placeholder,
   .product-img {
-    height: 800px;
+    height: 400px !important;
   }
   
   .featured-section .product-image {
@@ -1113,7 +1113,7 @@
   
   .product-image .image-placeholder,
   .product-img {
-    height: 600px;
+    height: 350px !important;
   }
   
   .featured-section .product-image {
