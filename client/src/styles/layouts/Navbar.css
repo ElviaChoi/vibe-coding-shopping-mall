@@ -279,6 +279,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-width: 85px;
 }
 
 .admin-btn:hover {
@@ -300,6 +301,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-width: 85px;
 }
 
 .logout-btn:hover {

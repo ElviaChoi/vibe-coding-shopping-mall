@@ -1,12 +1,13 @@
 /* 공통 상품 그리드 스타일 */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 15px;
   margin-top: 60px;
-  max-width: 1400px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  justify-items: center;
 }
 
 .product-item {
@@ -15,6 +16,8 @@
   align-items: center;
   text-decoration: none;
   color: inherit;
+  width: 100%;
+  max-width: 380px;
 }
 
 .product-item:hover {
@@ -22,8 +25,8 @@
 }
 
 .product-image {
-  width: 100% !important;
-  height: 500px !important;
+  width: 100%;
+  height: 500px;
   overflow: hidden;
   background: #f8f9fa;
   margin-bottom: 15px;
@@ -68,6 +71,11 @@
 }
 
 /* 상품 정보 */
+.product-info {
+  text-align: center;
+  width: 100%;
+}
+
 .product-info h4 {
   font-weight: 400;
   margin-bottom: 8px;

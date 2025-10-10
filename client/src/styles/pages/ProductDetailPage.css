@@ -81,7 +81,7 @@
   object-position: center;
 }
 
-.product-info {
+.product-detail-page .product-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
