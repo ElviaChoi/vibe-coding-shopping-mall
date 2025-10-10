@@ -18,15 +18,15 @@ function FeaturedProductsSection() {
         
         // 추천 상품만 조회 (isFeatured: true인 상품들만)
         const response = await productAPI.getProducts({
-          limit: 8, // 더 많은 추천 상품을 가져와서 4개만 표시
+          limit: 8, // 더 많은 추천 상품을 가져와서 3개만 표시
           isFeatured: true,
           isActive: true
         });
         
         if (response.success) {
-          // 추천 상품만 필터링하여 최대 4개까지 표시
+          // 추천 상품만 필터링하여 최대 3개까지 표시
           const featuredProducts = (response.data || []).filter(product => product.isFeatured === true);
-          setProducts(featuredProducts.slice(0, 4));
+          setProducts(featuredProducts.slice(0, 3));
         } else {
           setError('추천 상품을 불러오는데 실패했습니다.');
         }
@@ -51,7 +51,7 @@ function FeaturedProductsSection() {
             이번 시즌 가장 사랑받는 아이템들을 만나보세요.
           </p>
           <div className="products-grid">
-            {[...Array(4)].map((_, index) => (
+            {[...Array(3)].map((_, index) => (
               <div key={index} className="product-item loading">
                 <div className="product-image">
                   <div className="image-placeholder loading-placeholder"></div>
