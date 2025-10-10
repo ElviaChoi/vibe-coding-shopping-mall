@@ -2,11 +2,6 @@ import React from 'react';
 import { getStatusLabel } from '../../utils/orderUtils';
 
 const OrderListCard = ({ order, onOrderClick }) => {
-  console.log('OrderListCard order data:', order);
-  console.log('OrderListCard totalAmount:', order?.totalAmount);
-  console.log('OrderListCard payment:', order?.payment);
-  
-  // order가 없거나 필수 필드가 없는 경우 처리
   if (!order) {
     console.error('OrderListCard: order is null or undefined');
     return <div className="order-card error">주문 정보를 불러올 수 없습니다.</div>;

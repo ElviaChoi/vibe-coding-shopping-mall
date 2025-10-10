@@ -39,6 +39,8 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: #222;
+  margin: 0;
+  padding-left: 20px;
 }
 
 .back-button {

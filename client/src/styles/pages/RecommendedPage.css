@@ -2,7 +2,7 @@
 .recommended-page,
 .category-page {
   min-height: calc(100vh - 200px);
-  padding: 100px 20px 40px;
+  padding: 70px 20px 40px;
 }
 
 .recommended-page .page-header,
@@ -31,7 +31,7 @@
 @media (max-width: 768px) {
   .recommended-page,
   .category-page {
-    padding: 90px 15px 30px;
+    padding: 60px 15px 30px;
   }
 
   .recommended-page .page-header h1,
