@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProductImageGallery.css';
+import '../../styles/components/product/ProductImageGallery.css';
 
 const ProductImageGallery = ({ images, selectedImageIndex, onImageSelect }) => {
   if (!images || images.length === 0) {

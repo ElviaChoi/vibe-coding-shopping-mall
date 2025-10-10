@@ -2,7 +2,7 @@ import React from 'react';
 import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
 import ProductActions from './ProductActions';
-import './ProductInfo.css';
+import '../../styles/components/product/ProductInfo.css';
 
 const ProductInfo = ({ 
   product, 

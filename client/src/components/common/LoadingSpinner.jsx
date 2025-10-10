@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoadingSpinner.css';
+import '../../styles/components/common/LoadingSpinner.css';
 
 const LoadingSpinner = ({ message = '로딩 중...', size = 'medium' }) => {
   return (

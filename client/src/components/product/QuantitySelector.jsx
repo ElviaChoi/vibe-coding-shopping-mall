@@ -1,5 +1,5 @@
 import React from 'react';
-import './QuantitySelector.css';
+import '../../styles/components/product/QuantitySelector.css';
 
 const QuantitySelector = ({ quantity, onQuantityChange, maxQuantity = 10 }) => {
   const handleDecrease = () => {

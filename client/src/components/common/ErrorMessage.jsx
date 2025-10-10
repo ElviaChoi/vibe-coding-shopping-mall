@@ -1,5 +1,5 @@
 import React from 'react';
-import './ErrorMessage.css';
+import '../../styles/components/common/ErrorMessage.css';
 
 const ErrorMessage = ({ message, onRetry, retryText = '다시 시도' }) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import './EmptyState.css';
+import '../../styles/components/common/EmptyState.css';
 
 const EmptyState = ({ 
   icon = '📦', 

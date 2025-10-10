@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import './LazyImage.css';
+import '../../styles/components/common/LazyImage.css';
 
 const LazyImage = ({ 
   src, 

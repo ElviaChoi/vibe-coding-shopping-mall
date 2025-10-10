@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Modal from '../common/Modal';
 import { productAPI } from '../../utils/api';
-import './ProductEditModal.css';
+import '../../styles/components/admin/ProductEditModal.css';
 
 const ProductEditModal = React.memo(({ 
   product, 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './SizeSelector.css';
+import '../../styles/components/product/SizeSelector.css';
 
 const SizeSelector = ({ sizes, selectedSize, onSizeSelect }) => {
   if (!sizes || sizes.length === 0) return null;

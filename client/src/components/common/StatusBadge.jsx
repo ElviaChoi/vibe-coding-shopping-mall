@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import './StatusBadge.css';
+import '../../styles/components/common/StatusBadge.css';
 
 const STATUS_CONFIG = {
   pending: { color: '#6c757d', text: '주문대기' },
