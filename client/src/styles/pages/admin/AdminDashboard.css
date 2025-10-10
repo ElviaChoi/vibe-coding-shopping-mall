@@ -184,6 +184,9 @@
 /* Products List */
 .products-list {
   padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-item {
@@ -193,6 +196,8 @@
   gap: 16px;
   padding: 16px 0;
   border-bottom: 1px solid #f3f4f6;
+  width: auto;
+  min-width: 300px;
 }
 
 .product-item:last-child {
@@ -214,11 +219,11 @@
 }
 
 .admin-dashboard .products-list .product-item .product-info {
-  flex: 1;
   text-align: center !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+  max-width: 200px;
 }
 
 .admin-dashboard .products-list .product-item .product-info .product-name {
@@ -227,7 +232,6 @@
   color: #1f2937;
   margin: 0 0 4px 0;
   text-align: center !important;
-  width: 100% !important;
 }
 
 .admin-dashboard .products-list .product-item .product-info .product-sales {
@@ -235,7 +239,6 @@
   color: #6b7280;
   margin: 0;
   text-align: center !important;
-  width: 100% !important;
 }
 
 /* Loading, Error, Empty States */
