@@ -243,9 +243,14 @@ function Navbar({ user, loading, onLogout }) {
                   autoFocus
                 />
               </div>
-              <button type="submit" className="search-submit-btn">
-                검색
-              </button>
+              <div className="search-button-group">
+                <button type="button" className="search-cancel-btn" onClick={() => setSearchOpen(false)}>
+                  취소
+                </button>
+                <button type="submit" className="search-submit-btn">
+                  검색
+                </button>
+              </div>
             </form>
           </div>
         </>
