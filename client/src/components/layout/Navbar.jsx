@@ -1,10 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 
 function Navbar({ user, loading, onLogout }) {
   const { cartCount } = useCart();
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      setSearchOpen(false);
+      navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -34,7 +45,7 @@ function Navbar({ user, loading, onLogout }) {
           <div className="nav-icons">
             {(!user || user.user_type !== 'admin') && (
               <>
-                <button className="icon-btn search-btn" aria-label="검색">
+                <button className="icon-btn search-btn" aria-label="검색" onClick={() => setSearchOpen(true)}>
                   <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
@@ -121,16 +132,20 @@ function Navbar({ user, loading, onLogout }) {
               <Link to="/accessories" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>악세사리</Link>
               <Link to="/recommended" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>추천</Link>
               
+              {/* 검색 버튼 */}
+              {(!user || user.user_type !== 'admin') && (
+                <button className="mobile-nav-link search-link" onClick={() => { setSearchOpen(true); setMenuOpen(false); }}>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ marginRight: '8px' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  검색
+                </button>
+              )}
+              
               {/* 모바일 메뉴에 아이콘들 추가 */}
               <div className="mobile-menu-icons">
                 {(!user || user.user_type !== 'admin') && (
                   <>
-                    <button className="mobile-icon-btn search-btn" aria-label="검색">
-                      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                      <span>검색</span>
-                    </button>
                     
                     <Link to="/cart" className="mobile-icon-btn cart-btn" aria-label="장바구니" onClick={() => setMenuOpen(false)}>
                       <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -176,18 +191,62 @@ function Navbar({ user, loading, onLogout }) {
                         </button>
                       </div>
                     ) : (
-                      <Link to="/login" className="mobile-icon-btn login-btn" onClick={() => setMenuOpen(false)}>
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <span>로그인</span>
-                      </Link>
+                      <>
+                        <Link to="/login" className="mobile-icon-btn login-btn" onClick={() => setMenuOpen(false)}>
+                          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                          <span>로그인</span>
+                        </Link>
+                        <Link to="/signup" className="mobile-icon-btn signup-btn" onClick={() => setMenuOpen(false)}>
+                          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+                                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                          </svg>
+                          <span>회원가입</span>
+                        </Link>
+                      </>
                     )}
                   </>
                 )}
               </div>
             </div>
+          </div>
+        </>
+      )}
+
+      {/* 검색 모달 */}
+      {searchOpen && (
+        <>
+          <div className="search-overlay" onClick={() => setSearchOpen(false)}></div>
+          <div className="search-modal">
+            <div className="search-header">
+              <h2 className="search-title">상품 검색</h2>
+              <button className="search-close" onClick={() => setSearchOpen(false)}>
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <form className="search-form" onSubmit={handleSearchSubmit}>
+              <div className="search-input-wrapper">
+                <svg className="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  className="search-input-modal"
+                  placeholder="검색어를 입력하세요..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  autoFocus
+                />
+              </div>
+              <button type="submit" className="search-submit-btn">
+                검색
+              </button>
+            </form>
           </div>
         </>
       )}
