@@ -24,8 +24,11 @@ router.get('/stats', getProductStats);
 // 상품 고급 검색 (GET /api/products/search)
 router.get('/search', searchProducts);
 
-// 카테고리별 상품 조회 (GET /api/products/category/:mainCategory/:subCategory?)
-router.get('/category/:mainCategory/:subCategory?', getProductsByCategory);
+// 카테고리별 상품 조회 (GET /api/products/category/:mainCategory)
+router.get('/category/:mainCategory', getProductsByCategory);
+
+// 카테고리별 상품 조회 (GET /api/products/category/:mainCategory/:subCategory)
+router.get('/category/:mainCategory/:subCategory', getProductsByCategory);
 
 // SKU로 상품 조회 (GET /api/products/sku/:sku)
 router.get('/sku/:sku', getProductBySku);
