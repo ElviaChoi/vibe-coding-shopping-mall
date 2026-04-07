@@ -166,11 +166,6 @@
     text-align: left !important;
   }
 
-  .hero-title,
-  .hero-description {
-    transform: translateY(-14px);
-  }
-  
   .hero-buttons {
     justify-content: flex-start !important;
   }
