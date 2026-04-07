@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-              url('https://image.thehyundai.com/static/image/sect/hnm/cpnt/hnmmain2926060020250926105719.jpg') center top/cover;
+              url('../../../assets/images/hero-banner.webp') center top/cover;
   padding: 150px 0 0 0;
   overflow: hidden;
   width: 100vw;
@@ -164,6 +164,11 @@
     margin-left: 0 !important;
     padding-left: 0 !important;
     text-align: left !important;
+  }
+
+  .hero-title,
+  .hero-description {
+    transform: translateY(-14px);
   }
   
   .hero-buttons {
