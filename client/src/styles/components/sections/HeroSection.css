@@ -93,14 +93,12 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.women-btn.inverted {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.3);
-}
-
-.men-btn.inverted {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+/* 호버 중이 아닌 쪽 버튼 — 여성/남성 동일 톤으로 통일 */
+.hero-section .women-btn.inverted,
+.hero-section .men-btn.inverted {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
 }
 
 .hero-image {
@@ -182,6 +180,9 @@
   
   .hero-section .women-btn:hover,
   .hero-section .men-btn:hover {
+    background: #4a4a4a;
+    color: #fff;
+    border-color: #4a4a4a;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
